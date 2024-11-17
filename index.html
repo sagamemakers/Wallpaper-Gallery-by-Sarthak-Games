@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpaper Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Adding Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <div class="header-container">
+        <h1 class="site-title">Wallpaper Gallery</h1>
+        <p class="brand-tagline">by Sarthak Games</p> <!-- Add this line here -->
+        <nav>
+            <a href="#gallery">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search wallpapers...">
+        <button id="searchButton">Search</button>
+    </div>
+</header>
+
+    <main id="gallery"></main>
+
+    <!-- Branding Line -->
+    <div class="branding">
+        <p>by Sarthak Games</p>
+    </div>
+
+    <!-- Download Button -->
+    <div id="download-container" class="hidden">
+        <button id="downloadButton">Download High-Resolution</button>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm Sarthak Singh, a passionate game developer and software enthusiast from India...</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email - unknownheroes10@gmail.com</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Sarthak Games. All Rights Reserved.</p>
+            <p>Images provided by <a href="https://unsplash.com" target="_blank">Unsplash</a>.</p>
+            <p>Disclaimer: The wallpapers on this site are for personal use only. Redistribution or commercial use of the images is prohibited.</p>
+            <p>For any legal inquiries, please contact via the Contact page.</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
