@@ -193,3 +193,99 @@ footer p {
         transform: translateY(0);
     }
 }
+/* General Styles for Mobile */
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .header-container {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .site-title {
+        font-size: 24px; /* Smaller font size for title */
+    }
+
+    .brand-tagline {
+        font-size: 14px; /* Adjust branding text */
+        margin-top: 5px;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column; /* Stack menu items vertically */
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 10px;
+        text-decoration: none;
+        color: #3498db;
+        background: #f0f0f0;
+        border-radius: 5px;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns for images */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .gallery img {
+        width: 100%; /* Ensure images fit within grid cells */
+        border-radius: 8px;
+        transition: transform 0.2s;
+    }
+
+    .search-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .search-container input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .search-container button {
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .download-btn {
+        padding: 10px;
+        background-color: #2ecc71;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+/* Even smaller screens (e.g., phones) */
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr; /* One column for smaller screens */
+    }
+
+    .site-title {
+        font-size: 20px; /* Further reduce title size */
+    }
+}
