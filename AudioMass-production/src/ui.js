@@ -1224,102 +1224,18 @@
 				name:'Help',
 				children:[
 					{
-						name   : 'Store Offline Version',
+						name   : 'Contact Support',
 						action : function () {
-							if (window.location.href.indexOf('-cache') > 0) {
-
-								function onUpdateReady ( e ) {
-									if (confirm ('Would you like to refresh the page to load the newer version?'))
-										window.location.reload();
-								}
-								function downLoading ( e ) {
-									OneUp ('Downloading newer version', 1500);
-								}
-
-								window.applicationCache.onupdateready = onUpdateReady;
-								window.applicationCache.ondownloading = downLoading;
-
-								if(window.applicationCache.status === window.applicationCache.UPDATEREADY) {
-									onUpdateReady ();
-								}
-
-								window.applicationCache.update ();
-
-								return ;
-							}
-
-							var message = 'This will open a new window that will try to store a local version in your browser'; // nicer text
-
-							new PKSimpleModal ({
-								title : 'Open Offline Version?',
-
-								ondestroy : function( q ) {
-									app.ui.InteractionHandler.on = false;
-									app.ui.KeyHandler.removeCallback ('modalTempErr');
-								},
-
-								buttons:[
-									{
-										title:'OPEN',
-										callback: function( q ) {
-											window.open ('/index-cache.html');
-											q.Destroy ();
-										}
-									}
-								],
-								body:'<p>' + message + '</p>',
-								setup:function( q ) {
-									app.fireEvent ('RequestPause');
-									app.fireEvent( 'RequestRegionClear');
-
-									app.ui.InteractionHandler.checkAndSet ('modal');
-									app.ui.KeyHandler.addCallback ('modalTempErr', function ( e ) {
-										q.Destroy ();
-									}, [27]);
-								}
-							}).Show ();
-							// -
-						},
-						setup: function ( obj ) {
-							if (window.location.href.indexOf('-cache') > 0)
-							{
-								obj.innerHTML = 'Update Offline Version';
-							}
+							window.open('mailto:unknownheroes10@gmail.com?subject=Flipaud Support Request');
 						}
 					},
-
 					{
 						name:'---'
 					},
-
 					{
 						name   : 'About',
 						action : function () {
 							window.open ('/about.html');
-						}
-					},
-
-					{
-						name   : 'See Welcome Message',
-						action : function () {
-							PKAudioEditor._deps.Wlc ();
-						}
-					},
-					// {
-					// 	name   : 'About AudioMass',
-					// 	action : function () {
-					// 		window.open ('/about.html');
-					// 	}
-					// },
-
-					// {
-					// 	name:'---'
-					// },
-
-					{
-						name   : 'SourceCode on Github',
-						action : function () {
-							window.open ('https://github.com/pkalogiros/audiomass');
 						}
 					}
 				]
@@ -2536,7 +2452,8 @@
 		if (is_chrome)
 		{
 			timing.appendChild( pk_timingcnv );
-			pk_timingctx.fillStyle = "#000";
+			// Enhanced background for better visibility
+			pk_timingctx.fillStyle = "#1a2d22";
 			pk_timingctx.fillRect(0, 0, 150, 40);
 
 			for (var ii = 0; ii < 11; ++ii)
@@ -2545,11 +2462,13 @@
 				curr_cache.width = 18;
 				curr_cache.height = 26;
 				var curr_ctx = curr_cache.getContext('2d', {alpha:false});
-				curr_ctx.font = "29px Helvetica, Arial, sans-serif";
+				// Enhanced font for better readability
+				curr_ctx.font = "bold 24px 'Courier New', monospace";
 				curr_ctx.textAlign = "center";
-				curr_ctx.fillStyle = "#000";
+				curr_ctx.fillStyle = "#1a2d22";
 				curr_ctx.fillRect(0, 0, 18, 26);
-				curr_ctx.fillStyle = "#fff";
+				// Enhanced text color for better contrast
+				curr_ctx.fillStyle = "#1ecb5c";
 				curr_ctx.textBaseline = 'middle';
 
 				if (ii === 10) {
@@ -2557,11 +2476,9 @@
 					timing_caches[':'] = curr_cache;
 				}
 				else {
-					curr_ctx.fillText (ii + '', 9, 14);
-					timing_caches[ii+''] = curr_cache;
+						curr_ctx.fillText (ii + '', 9, 14);
+						timing_caches[ii+''] = curr_cache;
 				}
-				// timing_caches.push (curr_cache);
-				// document.body.appendChild( curr_cache );
 			}
 
 			(function (pk_timingctx, timing_caches){

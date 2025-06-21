@@ -7,7 +7,7 @@
 	<link rel="manifest" href="manifest.json">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
 
 	<meta name="description" content="Flipaud is a free, modern, full-featured web-based audio & waveform editing tool by Sarthak Games, based on AudioMass"/>
 	<meta property="og:image" content="ico.png"/>
@@ -19,7 +19,10 @@
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-title" content="Flipaud">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="theme-color" content="#16241d">
+	<meta name="msapplication-TileColor" content="#16241d">
+	<meta name="msapplication-navbutton-color" content="#16241d">
 
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@sarthakgames">
@@ -28,17 +31,36 @@
 	<meta name="twitter:description" content="Flipaud is a free, modern, full-featured web-based audio & waveform editing tool by Sarthak Games, based on AudioMass">
 	<meta name="twitter:image" content="ico.png">
 
+	<!-- Enhanced mobile touch handling -->
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	
+	<!-- Preload critical resources -->
+	<link rel="preload" href="main.css" as="style">
+	<link rel="preload" href="app.js" as="script">
+	
+	<!-- Enhanced fonts for better readability -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-	<header class="flipaud-header">
-		<div class="flipaud-header-content">
-			<img src="ico.png" alt="Flipaud Logo" class="flipaud-logo" />
-			<h1 class="flipaud-title">Flipaud</h1>
-			<span class="flipaud-byline">by Sarthak Games <span class="flipaud-based">(based on AudioMass)</span></span>
-		</div>
-	</header>
 	<div id="app"></div>
+
+	<!-- Corner Branding -->
+	<div class="flipaud-corner-brand">Flipaud</div>
+
+	<!-- Startup Branding Popup -->
+	<div id="flipaud-startup-popup" class="flipaud-startup-popup">
+		<div class="flipaud-startup-content">
+			<img src="ico.png" alt="Flipaud Logo" class="flipaud-startup-logo" />
+			<h1 class="flipaud-startup-title">Flipaud</h1>
+			<p class="flipaud-startup-subtitle">by Sarthak Games</p>
+			<p class="flipaud-startup-powered">powered by AudioMass</p>
+		</div>
+	</div>
 
 	<script src="dist/wavesurfer.js"></script>
 	<script src="dist/plugin/wavesurfer.regions.js"></script>
@@ -73,6 +95,25 @@
 			//	navigator.serviceWorker.register( 'sw.js' );
 			} catch ( error ) {}
 		}
+
+		// Startup branding popup
+		document.addEventListener('DOMContentLoaded', function() {
+			var startupPopup = document.getElementById('flipaud-startup-popup');
+			
+			if (startupPopup) {
+				// Show the popup for 3 seconds then fade away
+				setTimeout(function() {
+					startupPopup.classList.add('fade-out');
+					
+					// Remove the popup from DOM after fade animation completes
+					setTimeout(function() {
+						if (startupPopup.parentNode) {
+							startupPopup.parentNode.removeChild(startupPopup);
+						}
+					}, 1000); // Wait for fade animation to complete
+				}, 3000); // Show for 3 seconds
+			}
+		});
 	</script>
 </body>
 </html>
